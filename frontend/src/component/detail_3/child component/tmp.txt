@@ -1,0 +1,489 @@
+function AddForm(props) {
+    const {changeRender, init, docId, reloadAll} = props
+    const [input, setInput] = useState(init);
+    const container = useRef(null);
+
+    useEffect(() => {
+        setInput(init)
+    }, [init])
+
+    function handleSubmit(e) {
+        e.preventDefault();
+
+        const image = input.image
+
+        // Validate before store data
+        if (input.type === 'ADD') 
+            if(!validateImage(image))
+                return
+        
+
+        const new_headers = {...headers, 'Content-Type': 'multipart/form-data'}
+
+        let form = new FormData();
+        form.append('file', image);
+        form.append('name', input.name);
+        form.append('description', input.description);
+        if (input.type === 'EDIT') {
+            form.append('id', input._id)
+            form.append('imageId', input.imageId)
+        }
+        
+        // switch (input.type) {
+        //     case 'ADD': addForm(form, new_headers); break;
+        //     case 'EDIT': editForm(form, new_headers); break;
+        //     default:
+        //         break;
+        // }
+    }
+
+    function changeInput(e) {
+        setInput({...input, [e.target.name]: e.target.value})
+    }
+
+    function validateImage(image) {
+        // User must select a file and size with maximum of 2MB.
+        if (image   && Object.keys(image).length == 0 
+                    && Object.getPrototypeOf(image) === Object.prototype
+                    || image.size > 2000000) {
+            alert("You must provide an image of size 2MB!");
+            container.current.value = "";
+            return false
+        }
+
+        // Must be an image file
+        const extension = image.type.split('/')[1]
+        const support_type = ['png', 'jpg', 'jpeg']
+        if (!support_type.includes(extension)) {
+            const show_types = support_type.map(t => ` ${t.toUpperCase()}`)
+            alert(`Image must be ${show_types} types`);
+            container.current.value = "";
+            return false
+        }
+
+        return true
+    }
+
+    function changeImage(e) {
+        setInput({...input, image: e.target.files[0]})
+    }
+
+    function addForm(form, headers) {
+        axios.post(`http://localhost:5000/file/doc/${docId}/add/character`, form, {headers})
+             .then(() => {
+                setInput(init)
+                container.current.value = "";
+                changeRender()
+             })
+    }
+
+    function editForm(form, headers) {
+        axios.post(`http://localhost:5000/file/doc/${docId}/edit/character`, form, {headers})
+             .then(() => {
+                // setInput(init)
+                container.current.value = "";
+                reloadAll()
+             })
+    }
+
+
+ 
+
+    return <form onSubmit={handleSubmit} encType="multipart/form-data">
+        <div className="mb-1">
+            <label htmlFor="1" className="label">Name</label>
+            <input className="input mt-1" type="text" maxLength="20" name="name" required={true}
+                    value={input.name} 
+                    onChange={changeInput}/>
+        </div>
+        <div className="mb-1">
+            <label htmlFor="1" className="label">Description</label>
+            <textarea className="input mt-1" rows="3" type="text" name="description" maxLength="70" required={true}
+                        value={input.description} 
+                        onChange={changeInput}
+            ></textarea>
+        </div>
+        <input id="char1" type="file" name="image" onChange={changeImage} ref={container}/>
+        <div className="flex-end">
+            <button className="btn">{input.type}</button>
+        </div>
+    </form>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function validateImage(image) {
+    // User must select a file and size with maximum of 2MB.
+    if (image   && Object.keys(image).length == 0 
+                && Object.getPrototypeOf(image) === Object.prototype
+                || image.size > 2000000) {
+        alert("You must provide an image of size 2MB!");
+        container.current.value = "";
+        return false
+    }
+
+    // Must be an image file
+    const extension = image.type.split('/')[1]
+    const support_type = ['png', 'jpg', 'jpeg']
+    if (!support_type.includes(extension)) {
+        const show_types = support_type.map(t => ` ${t.toUpperCase()}`)
+        alert(`Image must be ${show_types} types`);
+        container.current.value = "";
+        return false
+    }
+
+    return true
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function addForm(form, headers) {
+    axios.post(`http://localhost:5000/file/doc/${docId}/add/character`, form, {headers})
+            .then(() => {
+                setInput(init)
+                container.current.value = "";
+                changeRender()
+            })
+}
+
+function editForm(form, headers) {
+    axios.post(`http://localhost:5000/file/doc/${docId}/edit/character`, form, {headers})
+            .then(() => {
+                // setInput(init)
+                container.current.value = "";
+                reloadAll()
+            })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////////////////////////////// CHAPTERS ////////////////////////////////////////
+<div className="options-2">
+            <div className="option-2 grey">
+                <form style={{width: "100%"}}>
+                    <input type="text" className="input-name"  id="abc" name="xyz" />
+                </form>
+
+                {/* <!-- <label className="tag-name" htmlFor="1"> -->
+                    <!-- <img src={icon1} alt="" className="tag-icon" /> -->
+                    <!-- HELLO a asd asd qweasd HELLO a asd asd qweasd asd asd HELLO a asd asd qweasd asd asd HELLO a asd asd qweasd asd asd -->
+                <!-- </label> --> */}
+
+                <div className="inline-btns flex-end">
+                    <div className="icon-wrap-2">
+                        <img className="icon-btn-2" src={edit}  alt="" />
+                    </div>
+                    <div className="icon-wrap-1">
+                        <img className="icon-btn-2" src={trash} alt=""/>
+                    </div>
+                </div>
+            </div>
+            <div className="option-2 grey">
+                <label className="tag-name" htmlFor="1">
+                    
+                    HELLO a asd asd qweasd HELLO a asd asd qweasd asd asd 
+                </label>
+                <div className="inline-btns flex-end">
+                    <div className="icon-wrap-2">
+                        <img className="icon-btn-2" src={edit}  alt="" />
+                    </div>
+                    <div className="icon-wrap-1">
+                        <img className="icon-btn-2" src={trash} alt=""/>
+                    </div>
+                </div>
+            </div>
+            <div className="option-2 grey">
+                <label className="tag-name" htmlFor="1">
+                    
+                    HELLO a asd asd qweasd HELLO a asd asd qweasd asd asd HELLO a asd asd qweasd asd asd HELLO a asd asd qweasd asd asd
+                </label>
+                <div className="inline-btns flex-end">
+                    <div className="icon-wrap-2">
+                        <img className="icon-btn-2" src={edit}  alt="" />
+                    </div>
+                    <div className="icon-wrap-1">
+                        <img className="icon-btn-2" src={trash} alt=""/>
+                    </div>
+                </div>
+            </div>
+            <div className="option-2 grey">
+                <label className="tag-name" htmlFor="1">
+                    
+                    HELLO a asd asd qweasd HELLO a asd asd qweasd asd asd HELLO a asd asd qweasd asd asd HELLO a asd asd qweasd asd asd
+                </label>
+                <div className="inline-btns flex-end">
+                    <div className="icon-wrap-2">
+                        <img className="icon-btn-2" src={edit}  alt="" />
+                    </div>
+                    <div className="icon-wrap-1">
+                        <img className="icon-btn-2" src={trash} alt=""/>
+                    </div>
+                </div>
+            </div>
+            <div className="option-2 grey">
+                <label className="tag-name" htmlFor="1">
+                    
+                    HELLO a asd asd qweasd HELLO a asd asd qweasd asd asd HELLO a asd asd qweasd asd asd HELLO a asd asd qweasd asd asd
+                </label>
+                <div className="inline-btns flex-end">
+                    <div className="icon-wrap-2">
+                        <img className="icon-btn-2" src={edit}  alt="" />
+                    </div>
+                    <div className="icon-wrap-1">
+                        <img className="icon-btn-2" src={trash} alt=""/>
+                    </div>
+                </div>
+            </div>
+            <div className="option-2 grey">
+                <label className="tag-name" htmlFor="1">
+                    
+                    HELLO a asd asd qweasd HELLO a asd asd qweasd asd asd HELLO a asd asd qweasd asd asd HELLO a asd asd qweasd asd asd
+                </label>
+                <div className="inline-btns flex-end">
+                    <div className="icon-wrap-2">
+                        <img className="icon-btn-2" src={edit}  alt="" />
+                    </div>
+                    <div className="icon-wrap-1">
+                        <img className="icon-btn-2" src={trash} alt=""/>
+                    </div>
+                </div>
+            </div>
+            <div className="option-2 grey">
+                <label className="tag-name" htmlFor="1">
+                    
+                    HELLO a asd asd qweasd HELLO a asd asd qweasd asd asd HELLO a asd asd qweasd asd asd HELLO a asd asd qweasd asd asd
+                </label>
+                <div className="inline-btns flex-end">
+                    <div className="icon-wrap-2">
+                        <img className="icon-btn-2" src={edit}  alt="" />
+                    </div>
+                    <div className="icon-wrap-1">
+                        <img className="icon-btn-2" src={trash} alt=""/>
+                    </div>
+                </div>
+            </div>
+            <div className="option-2 grey">
+                <label className="tag-name" htmlFor="1">
+                    
+                    HELLO a asd asd qweasd HELLO a asd asd qweasd asd asd HELLO a asd asd qweasd asd asd HELLO a asd asd qweasd asd asd
+                </label>
+                <div className="inline-btns flex-end">
+                    <div className="icon-wrap-2">
+                        <img className="icon-btn-2" src={edit}  alt="" />
+                    </div>
+                    <div className="icon-wrap-1">
+                        <img className="icon-btn-2" src={trash} alt=""/>
+                    </div>
+                </div>
+            </div>
+            <div className="option-2 grey">
+                <label className="tag-name" htmlFor="1">
+                    
+                    HELLO a asd asd qweasd HELLO a asd asd qweasd asd asd HELLO a asd asd qweasd asd asd HELLO a asd asd qweasd asd asd
+                </label>
+                <div className="inline-btns flex-end">
+                    <div className="icon-wrap-2">
+                        <img className="icon-btn-2" src={edit}  alt="" />
+                    </div>
+                    <div className="icon-wrap-1">
+                        <img className="icon-btn-2" src={trash} alt=""/>
+                    </div>
+                </div>
+            </div>
+            <div className="option-2 grey">
+                <label className="tag-name" htmlFor="1">
+                    
+                    HELLO a asd asd qweasd HELLO a asd asd qweasd asd asd 
+                </label>
+                <div className="inline-btns flex-end">
+                    <div className="icon-wrap-2">
+                        <img className="icon-btn-2" src={edit}  alt="" />
+                    </div>
+                    <div className="icon-wrap-1">
+                        <img className="icon-btn-2" src={trash} alt=""/>
+                    </div>
+                </div>
+            </div>
+            <div className="option-2 grey">
+                <label className="tag-name" htmlFor="1">
+                    
+                    HELLO a asd asd qweasd HELLO a asd asd qweasd asd asd HELLO a asd asd qweasd asd asd HELLO a asd asd qweasd asd asd
+                </label>
+                <div className="inline-btns flex-end">
+                    <div className="icon-wrap-2">
+                        <img className="icon-btn-2" src={edit}  alt="" />
+                    </div>
+                    <div className="icon-wrap-1">
+                        <img className="icon-btn-2" src={trash} alt=""/>
+                    </div>
+                </div>
+            </div>
+            <div className="option-2 grey">
+                <label className="tag-name" htmlFor="1">
+                    
+                    HELLO a asd asd qweasd HELLO a asd asd qweasd asd asd HELLO a asd asd qweasd asd asd HELLO a asd asd qweasd asd asd
+                </label>
+                <div className="inline-btns flex-end">
+                    <div className="icon-wrap-2">
+                        <img className="icon-btn-2" src={edit}  alt="" />
+                    </div>
+                    <div className="icon-wrap-1">
+                        <img className="icon-btn-2" src={trash} alt=""/>
+                    </div>
+                </div>
+            </div>
+            <div className="option-2 grey">
+                <label className="tag-name" htmlFor="1">
+                    
+                    HELLO a asd asd qweasd HELLO a asd asd qweasd asd asd HELLO a asd asd qweasd asd asd HELLO a asd asd qweasd asd asd
+                </label>
+                <div className="inline-btns flex-end">
+                    <div className="icon-wrap-2">
+                        <img className="icon-btn-2" src={edit}  alt="" />
+                    </div>
+                    <div className="icon-wrap-1">
+                        <img className="icon-btn-2" src={trash} alt=""/>
+                    </div>
+                </div>
+            </div>
+            <div className="option-2 grey">
+                <label className="tag-name" htmlFor="1">
+                    
+                    HELLO a asd asd qweasd HELLO a asd asd qweasd asd asd HELLO a asd asd qweasd asd asd HELLO a asd asd qweasd asd asd
+                </label>
+                <div className="inline-btns flex-end">
+                    <div className="icon-wrap-2">
+                        <img className="icon-btn-2" src={edit}  alt="" />
+                    </div>
+                    <div className="icon-wrap-1">
+                        <img className="icon-btn-2" src={trash} alt=""/>
+                    </div>
+                </div>
+            </div>
+            <div className="option-2 grey">
+                <label className="tag-name" htmlFor="1">
+                    
+                    HELLO a asd asd qweasd HELLO a asd asd qweasd asd asd HELLO a asd asd qweasd asd asd HELLO a asd asd qweasd asd asd
+                </label>
+                <div className="inline-btns flex-end">
+                    <div className="icon-wrap-2">
+                        <img className="icon-btn-2" src={edit}  alt="" />
+                    </div>
+                    <div className="icon-wrap-1">
+                        <img className="icon-btn-2" src={trash} alt=""/>
+                    </div>
+                </div>
+            </div>
+            <div className="option-2 grey">
+                <label className="tag-name" htmlFor="1">
+                    
+                    HELLO a asd asd qweasd HELLO a asd asd qweasd asd asd HELLO a asd asd qweasd asd asd HELLO a asd asd qweasd asd asd
+                </label>
+                <div className="inline-btns flex-end">
+                    <div className="icon-wrap-2">
+                        <img className="icon-btn-2" src={edit}  alt="" />
+                    </div>
+                    <div className="icon-wrap-1">
+                        <img className="icon-btn-2" src={trash} alt=""/>
+                    </div>
+                </div>
+            </div>
+            <div className="option-2 grey">
+                <label className="tag-name" htmlFor="1">
+                    
+                    HELLO a asd asd qweasd HELLO a asd asd qweasd asd asd HELLO a asd asd qweasd asd asd HELLO a asd asd qweasd asd asd
+                </label>
+                <div className="inline-btns flex-end">
+                    <div className="icon-wrap-2">
+                        <img className="icon-btn-2" src={edit}  alt="" />
+                    </div>
+                    <div className="icon-wrap-1">
+                        <img className="icon-btn-2" src={trash} alt=""/>
+                    </div>
+                </div>
+            </div>
+        </div>

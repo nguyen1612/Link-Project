@@ -1,0 +1,92 @@
+.TagPopup {
+    .show {
+        display: block;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+    :root {
+        --border: #d1d6ee;
+        --border-hover: #bbc1e1;
+    }
+
+    .block-tags {
+        overflow: hidden;
+        height: 190px;
+        width: 443px;
+        overflow: auto;
+
+        position: absolute;
+        top: -162px; /* -73px -120px */
+        left: 0px;
+        z-index: 2;
+
+        display: grid;
+        grid-template-columns: auto auto;
+        gap: 20px;
+
+        padding: 10px;
+        background-color: white;
+        border: 1.5px solid #e0e0e0;
+        border-radius: 3px;
+        user-select: none;
+    }
+
+    .tags-1 {
+        width: 250px;
+        top: -195px;
+        grid-template-columns: auto;
+    }
+
+    input[type=checkbox] {
+        -ms-transform: scale(1.2); /* IE */
+        -moz-transform: scale(1.2); /* FF */
+        -webkit-transform: scale(1.2); /* Safari and Chrome */
+        -o-transform: scale(1.2); /* Opera */
+        transform: scale(1.2);
+        padding: 10px;
+    }
+
+    input[type=checkbox]:hover {
+        cursor: pointer;
+    }
+
+    .block {
+        display: flex;
+        justify-content: flex-start;
+        width: 200px;
+        gap: 5px;
+        font-size: 15px;
+
+        justify-content: center; /* align horizontal */
+        align-items: center; /* align vertical */
+    }
+
+    .block-label {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        width: 100%;
+    }
+    /* .block:hover {
+        cursor: pointer;
+    } */
+
+    .label {
+        padding: 8px 10px;
+        width: 100%;
+        /* background-color: grey; */
+        border-radius: 2px;
+    }
+
+    .label:hover {
+        cursor: pointer;
+    }
+
+    .delete {
+        width: 15px;
+        height: 15px;
+    }
+}

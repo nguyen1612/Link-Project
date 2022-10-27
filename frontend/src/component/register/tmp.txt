@@ -1,0 +1,47 @@
+<div id="Login">
+    
+    <div className="overlay"></div>
+    <main>
+        <section id="login">
+            <h2 style={{marginBottom: 0}}>Log In</h2>
+
+            <div className="register">
+                <ul id="tabs">
+                    <li onClick={onTabClick}>
+                        <button className="clearBtn active">Log In</button>
+                    </li>
+                    <li onClick={onTabClick}>
+                        <button className="clearBtn">Sign Up</button>
+                    </li>
+                </ul>
+                <div className="outer">
+                    <div className="inner"></div>
+                </div>
+            </div>
+
+            <form className='form-control' onSubmit={handleSubmit}>
+                <div className='input-block' id="username">
+                    <input  type="text" name='username' placeholder=" " value={input.username} 
+                            onFocus={() => addBorder('username')} 
+                            onBlur={() => rmvBorder('username')}
+                            onChange={handleInput} />
+                    <label htmlFor="username" className="move-out">Username</label>
+                </div>
+
+                <div className='input-block' id="password">
+                    <input  type="password" name='password' placeholder=" " value={input.password}
+                            onFocus={() => addBorder('password')}
+                            onBlur={() => rmvBorder('password')}
+                            onChange={handleInput} />
+                    <label htmlFor="input-password" className="move-out">Password</label>
+                    <div className='img-item'>
+                        <img id='eye1' src={hide}/>
+                    </div>
+                </div>
+
+                <a href="">Dont't have an account? Signup here</a>
+                <button type="submit" className="btn">Log In</button>
+            </form>
+        </section>
+    </main>
+    </div>
