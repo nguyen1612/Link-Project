@@ -1,0 +1,255 @@
+GET http://localhost:5000/topics
+# Authorization: Beaer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5ndXllbiIsImlhdCI6MTY2Mzg1NTQyNCwiZXhwIjoxNjYzODU1NDQ0fQ.12XguM9fciai5yXb4NlTg4DosbINciyMsmZ9jl86n_A
+
+###
+
+POST http://localhost:5500/token
+Content-Type: application/json
+
+{
+    "token": 
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5ndXllbiIsImlhdCI6MTY2Mzg1NTM5Nn0.DGV6O7iyZ-MjkRAAc1rKNLsFjpLtVg2__Qw1aXF-QQI"
+}
+
+###
+
+DELETE  http://localhost:5500/logout
+Content-Type: application/json
+
+{
+    "token": 
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5ndXllbiIsImlhdCI6MTY2Mzg1NTM5Nn0.DGV6O7iyZ-MjkRAAc1rKNLsFjpLtVg2__Qw1aXF-QQI"
+}
+
+
+###
+
+POST http://localhost:5500/login
+Content-Type: application/json
+
+{
+    "username": "nguyen1",
+    "password": "1"
+}
+
+###
+
+POST http://localhost:5500/signup
+Content-Type: application/json
+
+{
+    "email": "nguyenpgn@yahoo.com",
+    "username": "nguyenpgn",
+    "password1": "nguyenpgn",
+    "password2": "nguyenpgn"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+###
+POST http://localhost:5000/data/doc/create/tag
+Content-Type: application/json
+Authorization: Beaer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5ndXllbjEiLCJwYXNzd29yZCI6IjEiLCJpZCI6IjYzM2E3YWZjZjQ3MDBkZGZhMDNmY2EzMCIsImlhdCI6MTY2Njg2NzA2OSwiZXhwIjoxNjY2ODg1MDY5fQ.ou-_y68mVyP5LeK1hzsXu1D9CTtyQ7N1yjZWvpn4OaE
+
+{
+    "name": "adventure",
+    "description": "japanese comics"
+}
+
+###
+GET http://localhost:5000/data/doc/get/tag
+Authorization: Beaer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5ndXllbjEiLCJwYXNzd29yZCI6IjEiLCJpZCI6IjYzM2E3YWZjZjQ3MDBkZGZhMDNmY2EzMCIsImlhdCI6MTY2Njg2NzA2OSwiZXhwIjoxNjY2ODg1MDY5fQ.ou-_y68mVyP5LeK1hzsXu1D9CTtyQ7N1yjZWvpn4OaE
+
+
+
+
+
+
+
+
+###
+GET http://localhost:5000/data/link/doc/63404dcb17ca0e5d79632781/get
+Authorization: Beaer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5ndXllbjEiLCJwYXNzd29yZCI6IjEiLCJpZCI6IjYzM2E3YWZjZjQ3MDBkZGZhMDNmY2EzMCIsImlhdCI6MTY2NjY5NTk3MywiZXhwIjoxNjY2NzEzOTczfQ.XJAEcZsbCkXD-_RBIm1qDLCpqwD14S6bUVHhsW1Ga54
+
+
+
+###
+POST http://localhost:5000/data/link/doc/63404dcb17ca0e5d79632781/create
+Authorization: Beaer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5ndXllbjEiLCJwYXNzd29yZCI6IjEiLCJpZCI6IjYzM2E3YWZjZjQ3MDBkZGZhMDNmY2EzMCIsImlhdCI6MTY2NjY5NTk3MywiZXhwIjoxNjY2NzEzOTczfQ.XJAEcZsbCkXD-_RBIm1qDLCpqwD14S6bUVHhsW1Ga54
+Content-Type: application/json
+
+{
+    "title": "Chap 1",
+    "url": "https://axios-http.com/docs/cancellation",
+    "tags": ["6353a4585dd756cc2dc7b0f3", "6353a46a5dd756cc2dc7b102", "6353a4835dd756cc2dc7b111"]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+###
+POST http://localhost:5000/data/tag/doc/63404dcb17ca0e5d79632781/create
+Authorization: Beaer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5ndXllbjEiLCJwYXNzd29yZCI6IjEiLCJpZCI6IjYzM2E3YWZjZjQ3MDBkZGZhMDNmY2EzMCIsImlhdCI6MTY2NjQyMzUxNiwiZXhwIjoxNjY2NDQxNTE2fQ.2DsG9gkNyfPqNO4PpPbXkkB2wX0wVq2LnLTwDq9wGJU
+Content-Type: application/json
+
+{
+    "name": "",
+    "description": "Qwe qwe qwe"
+}
+
+
+
+
+
+###
+GET http://localhost:5000/file/dropAll
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Create Tag
+# eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5ndXllbjEiLCJwYXNzd29yZCI6IjEiLCJpZCI6IjYzM2E3YWZjZjQ3MDBkZGZhMDNmY2EzMCIsImlhdCI6MTY2NTEzNDc0MCwiZXhwIjoxNjY1MTUyNzQwfQ.LDnqD68RhGg74Rehh3gnrPYZW2TEUA4YDG2Ix1n0ei0
+###
+
+POST http://localhost:5000/data/create/doc/63404dcb17ca0e5d79632781/link/tag
+Content-Type: application/json
+Authorization: Beaer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5ndXllbjEiLCJwYXNzd29yZCI6IjEiLCJpZCI6IjYzM2E3YWZjZjQ3MDBkZGZhMDNmY2EzMCIsImlhdCI6MTY2NTIyMzgzNiwiZXhwIjoxNjY1MjQxODM2fQ.nEpj0Mztz4tvfsR33wXjVAQDONS0FmV5Y8XUniJPbi8
+
+{
+    "name": "martial arts",
+    "description": "japanese comics"
+}
+
+
+
+# Create Link
+# eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5ndXllbjEiLCJwYXNzd29yZCI6IjEiLCJpZCI6IjYzM2E3YWZjZjQ3MDBkZGZhMDNmY2EzMCIsImlhdCI6MTY2NDg5NjM0NiwiZXhwIjoxNjY0OTE0MzQ2fQ.o67gAX78qL9XmkbE_eJaRAtThQiDw00G_zNGbR-g0E0
+###
+
+POST http://localhost:5000/data/create/doc/63404dcb17ca0e5d79632781/link
+Content-Type: application/json
+Authorization: Beaer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5ndXllbjEiLCJwYXNzd29yZCI6IjEiLCJpZCI6IjYzM2E3YWZjZjQ3MDBkZGZhMDNmY2EzMCIsImlhdCI6MTY2NTIyMzgzNiwiZXhwIjoxNjY1MjQxODM2fQ.nEpj0Mztz4tvfsR33wXjVAQDONS0FmV5Y8XUniJPbi8
+
+{
+    "title": "One Piece chap 600",
+    "description": "qzq",
+    "url": "https://www.youtube.com/",
+    "tags": ["63414caaee541cdb2984cf81"],
+    "group": "63414e9fbec44da39d705daf"
+}
+
+###
+
+# Create Group
+POST http://localhost:5000/data/create/doc/63404dcb17ca0e5d79632781/group
+Content-Type: application/json
+Authorization: Beaer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5ndXllbjEiLCJwYXNzd29yZCI6IjEiLCJpZCI6IjYzM2E3YWZjZjQ3MDBkZGZhMDNmY2EzMCIsImlhdCI6MTY2NTIyMzgzNiwiZXhwIjoxNjY1MjQxODM2fQ.nEpj0Mztz4tvfsR33wXjVAQDONS0FmV5Y8XUniJPbi8
+
+{
+    "title": "Arc Dressdrosa"
+}
+
+
+###
+# Create Doc
+POST http://localhost:5000/data/create/doc
+Content-Type: application/json
+Authorization: Beaer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5ndXllbjEiLCJwYXNzd29yZCI6IjEiLCJpZCI6IjYzM2E3YWZjZjQ3MDBkZGZhMDNmY2EzMCIsImlhdCI6MTY2NTE1ODA0NSwiZXhwIjoxNjY1MTc2MDQ1fQ.pj4u6LECZKP-EDtUvZWoYoAMUg-eM5g_1norzgzsCS4
+
+{
+    "title": "One Piece", 
+    "description": "Nothing", 
+    "tags": ["634005b28134e45e58534fca"]
+}
+
+
+
+
+###
+# Update Doc Groups
+POST http://localhost:5000/data/update/doc/63404dcb17ca0e5d79632781/group
+Content-Type: application/json
+Authorization: Beaer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5ndXllbjEiLCJwYXNzd29yZCI6IjEiLCJpZCI6IjYzM2E3YWZjZjQ3MDBkZGZhMDNmY2EzMCIsImlhdCI6MTY2NTE1ODA0NSwiZXhwIjoxNjY1MTc2MDQ1fQ.pj4u6LECZKP-EDtUvZWoYoAMUg-eM5g_1norzgzsCS4
+
+{
+    "groups": ["63404d4d17ca0e5d79632776", "63404d8f17ca0e5d7963277b"]
+}
+
+
+
+
+#  Get Links from Group
+###
+GET http://localhost:5000/data/get/group/633c50e1538134738c5cb39c
+Authorization: Beaer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5ndXllbjEiLCJwYXNzd29yZCI6IjEiLCJpZCI6IjYzM2E3YWZjZjQ3MDBkZGZhMDNmY2EzMCIsImlhdCI6MTY2NTEzNDc0MCwiZXhwIjoxNjY1MTUyNzQwfQ.LDnqD68RhGg74Rehh3gnrPYZW2TEUA4YDG2Ix1n0ei0
+
+
+
+
+
+# TESTING
+###
+GET http://localhost:5000/data/get/data/63404dcb17ca0e5d79632781
+Authorization: Beaer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5ndXllbjEiLCJwYXNzd29yZCI6IjEiLCJpZCI6IjYzM2E3YWZjZjQ3MDBkZGZhMDNmY2EzMCIsImlhdCI6MTY2NTIxODU2MiwiZXhwIjoxNjY1MjM2NTYyfQ.k0CuacsiQspyjzzlB_PeOrGUIfXd1gAi0HoUNVNYJrw
+Content-Type: application/json
+
+# {
+#     "docId": "633d249300a0a7350aeafb73"
+# }
+
+
+###
+GET http://localhost:5000/data/get/doc/63404dcb17ca0e5d79632781
+Authorization: Beaer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5ndXllbjEiLCJwYXNzd29yZCI6IjEiLCJpZCI6IjYzM2E3YWZjZjQ3MDBkZGZhMDNmY2EzMCIsImlhdCI6MTY2NTE1ODA0NSwiZXhwIjoxNjY1MTc2MDQ1fQ.pj4u6LECZKP-EDtUvZWoYoAMUg-eM5g_1norzgzsCS4
+Content-Type: application/json
+
+
+
+
