@@ -293,47 +293,4 @@ client.connect(_ => {
     })
 
 
-    // // Study Gridfs
-    // router.get('/file', async (req, res) => {
-
-    //     console.log("REACH")
-    
-    //     // fs.createReadStream('./solo_leveling.png').
-    //     //     pipe(bucket.openUploadStream('solo_1.png', {metadata: {userId: ObjectId('633a7afcf4700ddfa03fca30')}})).
-    //     //     on('error', function(error) {
-    //     //         assert.ifError(error);
-    //     //     }).
-    //     //     on('finish', function() {
-    //     //         console.log('done!');
-    //     //         process.exit(0);
-    //     //     });
-
-
-    //     // 634c2987b3e88972ecb51729
-    //     // 634c1b11498b1cdfe1f4a353 (solo)
-    //     const stream = bucket.openDownloadStream(ObjectId('634c1b11498b1cdfe1f4a353'))
-    //     let bufs = [];
-
-    //     stream
-    //     .on('data', chunk => {
-    //         // console.log('REACH')
-    //         bufs.push(chunk);
-    //     })
-    //     .on('error', (err) => {
-    //         console.log(err)
-    //     })
-    //     .on('end', () => {
-    //         const fbuf = Buffer.concat(bufs);
-    //         const file = (fbuf.toString('base64'));
-    //         return res.send(file);
-    //     })
-    // })
-})
-
-
-
-
-
-
-
 module.exports = router
